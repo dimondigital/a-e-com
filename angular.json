@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "a-e-com": "apps/a-e-com",
+    "a-e-com-e2e": "apps/a-e-com-e2e",
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces"
+  }
+}

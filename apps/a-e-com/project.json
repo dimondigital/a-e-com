@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/a-e-com",
+  "sourceRoot": "apps/a-e-com/src",
+  "prefix": "a-e-com",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/a-e-com",
+        "index": "apps/a-e-com/src/index.html",
+        "main": "apps/a-e-com/src/main.ts",
+        "polyfills": "apps/a-e-com/src/polyfills.ts",
+        "tsConfig": "apps/a-e-com/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/a-e-com/src/favicon.ico", "apps/a-e-com/src/assets"],
+        "styles": ["apps/a-e-com/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/a-e-com/src/environments/environment.ts",
+              "with": "apps/a-e-com/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "a-e-com:build:production"
+        },
+        "development": {
+          "browserTarget": "a-e-com:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/a-e-com/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "a-e-com:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/a-e-com/src/**/*.ts",
+          "apps/a-e-com/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/a-e-com"],
+      "options": {
+        "jestConfig": "apps/a-e-com/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
